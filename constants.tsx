@@ -9,12 +9,12 @@ const ThreadsIcon = (props: any) => (
 );
 
 export const CONFIG: AppConfig = {
-    avatarUrl: "/asc_logo.png",
+    avatarUrl: import.meta.env.BASE_URL + "asc_logo.png",
     title: "AISCU",
     subtitle: "人工智慧應用社",
     bio: "我們是東吳大學人工智慧應用社⚡<br/>社團內會舉辦工作坊、知識課程、競賽活動<br/>無論您是否有程式基礎都期待您的加入唷~🎉",
     email: "ai.scu.club@gmail.com",
-    logoUrl: "/asc_logo.png",
+    logoUrl: import.meta.env.BASE_URL + "asc_logo.png",
     socials: [
         { label: "Instagram", url: "https://www.instagram.com/ai.scu.club?igsh=d3BjbXZkOXV4aDVv", icon: Instagram },
         { label: "Facebook", url: "https://facebook.com", icon: Facebook },
@@ -23,7 +23,7 @@ export const CONFIG: AppConfig = {
     ],
     links: [
         { text: "幹部招新報名", url: "https://docs.google.com/forms/d/e/1FAIpQLSfnkHfvOLFiH-3pyjaS1v2Qnjvl2ZqBic2Dv77aILmh6T-Pcg/viewform?usp=publish-editor", icon: UserCog },
-        { text: "學期課表", url: "/S__121782275.jpg", icon: Users },
+        { text: "學期課表", url: import.meta.env.BASE_URL + "S__121782275.jpg", icon: Users },
         { text: "官方網站", url: "https://aiscu.zeabur.app/", icon: Globe },
         { text: "聯絡我們", url: "mailto:ai.scu.club@gmail.com", icon: Mail }
     ]
