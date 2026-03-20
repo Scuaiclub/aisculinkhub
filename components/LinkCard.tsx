@@ -1,20 +1,28 @@
 import React from 'react';
-import { MainLink } from '../types';
+import { LucideIcon } from 'lucide-react';
+import { trackClick } from '../services/analytics';
 
-interface LinkCardProps extends Omit<MainLink, 'text'> {
+interface LinkCardProps {
   text: string;
+  url: string;
+  icon: LucideIcon;
 }
 
 export const LinkCard: React.FC<LinkCardProps> = ({ text, url, icon: Icon }) => {
+  const handleClick = () => {
+    trackClick(text, url);
+  };
+
   return (
-    <a 
+    <a
       href={url}
-      target="_blank" 
+      target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="group relative block w-full bg-white/[0.02] backdrop-blur-md h-[76px] text-white no-underline transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden font-body font-bold text-[1.1rem] md:text-[1.2rem] tracking-wider cyber-clip border border-white/5 hover:bg-primary/5 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(0,240,255,0.1)] active:scale-[0.98]"
     >
       {/* Background Layer 0: Animated Grid Pattern */}
-      <div 
+      <div
         className="absolute inset-0 z-0 opacity-[0.12] group-hover:opacity-[0.2] transition-opacity duration-500 pointer-events-none"
         style={{
           backgroundImage: `
@@ -39,20 +47,20 @@ export const LinkCard: React.FC<LinkCardProps> = ({ text, url, icon: Icon }) => 
 
       {/* Content Container */}
       <div className="relative z-10 w-full h-full flex items-center px-5">
-        
+
         {/* Prominent Icon Box with Layered Glass Effect */}
         <div className="relative flex items-center justify-center w-12 h-12 mr-5 shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[5deg]">
-            {/* Icon Frame Background */}
-            <div className="absolute inset-0 bg-primary/10 rounded-lg border border-primary/20 backdrop-blur-sm group-hover:bg-primary/20 group-hover:border-primary/40 transition-colors duration-300"></div>
-            
-            {/* The Main Icon */}
-            <div className="relative z-10 text-primary drop-shadow-[0_0_8px_rgba(0,240,255,0.6)] group-hover:drop-shadow-[0_0_12px_rgba(0,240,255,0.9)] transition-all duration-300">
-              <Icon size={24} strokeWidth={2.5} />
-            </div>
+          {/* Icon Frame Background */}
+          <div className="absolute inset-0 bg-primary/10 rounded-lg border border-primary/20 backdrop-blur-sm group-hover:bg-primary/20 group-hover:border-primary/40 transition-colors duration-300"></div>
 
-            {/* Corner Decorative Dots */}
-            <div className="absolute -top-1 -left-1 w-1 h-1 bg-primary/60 rounded-full group-hover:scale-150 transition-transform"></div>
-            <div className="absolute -bottom-1 -right-1 w-1 h-1 bg-primary/60 rounded-full group-hover:scale-150 transition-transform"></div>
+          {/* The Main Icon */}
+          <div className="relative z-10 text-primary drop-shadow-[0_0_8px_rgba(0,240,255,0.6)] group-hover:drop-shadow-[0_0_12px_rgba(0,240,255,0.9)] transition-all duration-300">
+            <Icon size={24} strokeWidth={2.5} />
+          </div>
+
+          {/* Corner Decorative Dots */}
+          <div className="absolute -top-1 -left-1 w-1 h-1 bg-primary/60 rounded-full group-hover:scale-150 transition-transform"></div>
+          <div className="absolute -bottom-1 -right-1 w-1 h-1 bg-primary/60 rounded-full group-hover:scale-150 transition-transform"></div>
         </div>
 
         {/* Text Content */}
@@ -66,13 +74,14 @@ export const LinkCard: React.FC<LinkCardProps> = ({ text, url, icon: Icon }) => 
 
         {/* Right Arrow/Indicator */}
         <div className="opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 text-primary/60">
-           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-             <path d="M5 12h14M12 5l7 7-7 7" />
-           </svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes shimmer {
           100% { transform: translateX(100%); }
         }

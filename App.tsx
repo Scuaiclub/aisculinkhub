@@ -8,7 +8,8 @@ import { Footer } from './components/Footer';
 import { CONFIG } from './constants';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const App: React.FC = () => {
+// Moved to Home component for routing logic
+export const Home: React.FC = () => {
   return (
     <main className="relative min-h-screen w-full flex flex-col items-center overflow-x-hidden text-text font-body">
       {/* Background Elements */}
@@ -66,6 +67,21 @@ const App: React.FC = () => {
         <Footer email={CONFIG.email} />
       </div>
     </main>
+  );
+};
+
+// Main App Router
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AdminDashboard } from './components/AdminDashboard';
+
+const App: React.FC = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
