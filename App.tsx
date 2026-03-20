@@ -5,7 +5,7 @@ import { ProfileHeader } from './components/ProfileHeader';
 import { SocialLinks } from './components/SocialLinks';
 import { LinkCard } from './components/LinkCard';
 import { Footer } from './components/Footer';
-import { CONFIG } from './constants';
+import { CONFIG } from './appConfig';
 import { AnimatePresence, motion } from 'framer-motion';
 
 // Moved to Home component for routing logic
