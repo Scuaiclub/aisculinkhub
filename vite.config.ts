@@ -6,6 +6,7 @@ import { viteSingleFile } from "vite-plugin-singlefile";
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   return {
+    base: '/aisculinkhub/',
     server: {
       port: 3000,
       host: '0.0.0.0',
